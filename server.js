@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('./app');
+const listeningPort = process.env.PORT ||'5678';
 
 const normalizePort = val => {
 	const port = parseInt(val, 10);
@@ -12,7 +13,7 @@ const normalizePort = val => {
 	}
 	return false;
 };
-const port = normalizePort(process.env.PORT ||'5678');
+const port = normalizePort(listeningPort);
 app.set('port', port);
 
 const errorHandler = error => {
@@ -42,6 +43,7 @@ server.on('listening', () => {
 	const address = server.address();
 	const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
 	console.log('Listening on ' + bind);
+	console.log(`app listening at: ${listeningPort}`)
 });
 
 server.listen(port);
