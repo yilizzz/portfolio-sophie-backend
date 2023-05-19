@@ -45,4 +45,11 @@ server.on('listening', () => {
 	console.log('Listening on ' + bind);
 });
 
-server.listen(port);
+//server.listen(port);
+server.listen(
+    process.env.PORT,
+    process.env.IP,
+    function(){
+        console.log('Server on Alwaysdata is started!');
+    }
+);

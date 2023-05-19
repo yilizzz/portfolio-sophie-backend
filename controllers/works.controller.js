@@ -7,11 +7,12 @@ exports.findAll = async (req, res) =>  {
 }
 
 exports.create = async (req, res) => {
-	const host = req.get('host');
+	//const host = req.get('host');
+	const host = `${process.env.IP}`
 	const title = req.body.title;
 	const categoryId = req.body.category;
 	const userId = req.auth.userId;
-	const imageUrl = `${req.protocol}://${host}/images/${req.file.filename}`;
+	const imageUrl = `https://portfolio-sophie.alwaysdata.net/images/${req.file.filename}`;
 	try{
 		const work = await Works.create({
 			title,
